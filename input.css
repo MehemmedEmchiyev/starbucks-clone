@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@theme{--color-root-green: #00754A;}
+@font-face {
+    font-family: SoDoSans-Regular;
+    src: url("fonts/SoDo\ Sans-Regular.otf");
+}
+@font-face {
+    font-family: SoDoSans-Bold;
+    src: url("fonts/SoDo\ Sans-Bold.otf");
+}
+.boldFont{font-family: SoDoSans-Bold !important; }
+*{font-family: SoDoSans-Regular;}
+#reward-hero{background: url("img/rewards-hero.png") center/cover;}
+.specialBorder{border-bottom: 3px solid #00754A ;}
+img{object-fit: contain !important;}
+#main-end{background: url(img/bg.png) center/cover;}
