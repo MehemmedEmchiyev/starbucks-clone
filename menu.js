@@ -1,15 +1,24 @@
 let dataArr = []
 let statue = false
 let cat = ''
-fetch("https://raw.githubusercontent.com/zahid022/json/main/starbucks.json")
+let loadStatue = true
+const load = document.getElementById("load")
+const getLoader = () =>  loadStatue ? getFetch() : load.style.display = "none" 
+getLoader()
+function getFetch(){
+    fetch("https://raw.githubusercontent.com/zahid022/json/main/starbucks.json")
      .then(res => res.json())
      .then(data => {
-        // console.log(data);
-        dataArr = data
-        generateCategory()
-        generateProduct(data)
-        // getElement()
+         dataArr = data
+         generateCategory()
+         generateProduct(data)   
+         if(dataArr.length) {
+            loadStatue = false
+            getLoader()
+         }
     })
+}
+getFetch()
 const category = document.getElementById("category")
 const bigCategory = document.getElementById("bigCategory")
 function generateCategory(){
@@ -27,7 +36,6 @@ function generateCategory(){
 function generateProduct(arg){
     let  arr = []
     let  k = 1
-    console.log(arg);
     
     let rndArr = ["https://globalassets.starbucks.com/digitalassets/products/merch/11148665PLSTCCLDCUP16OZ.jpg",
                  "https://globalassets.starbucks.com/digitalassets/products/at-home/SBX20190715_ViaInstantSweetenedIcedCoffee.jpg",
@@ -56,8 +64,6 @@ function generateProduct(arg){
             `
         ).join("") : 
         arg.map(item => 
-
-            
             `
             <div class="w-full pb-10">
                 <h2 class="pb-4 text-[24px] boldFont">${item.name}</h2>
